@@ -35,7 +35,7 @@ void vm_push(struct vm* vm, const int32_t value)
 {
     if(vm->stack_pointer == VM_STACK_SIZE - 1)
     {
-        fprintf(stderr, "Stack overflow\n");
+        fprintf(stderr, "Stack overflow.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -47,7 +47,7 @@ int32_t vm_pop(struct vm* vm)
 {
     if(vm->stack_pointer == -1)
     {
-        fprintf(stderr, "Stack underflow\n");
+        fprintf(stderr, "Stack underflow.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -60,8 +60,8 @@ int32_t vm_peek(struct vm* vm)
 {
     if(vm->stack_pointer == -1)
     {
-        fprintf(stderr, "Stack underflow\n");
-        exit(EXIT_FAILURE);
+        printf("Stack is empty.\n");
+        return 0;
     }
     
     return vm->stack[vm->stack_pointer];
@@ -80,7 +80,7 @@ void vm_run(struct vm* vm, const struct vm_instruction* program, const uint16_t 
         switch (instruction.opcode)
         {
             case VM_OP_PRT:
-                printf("%d\n", vm->stack[vm->stack_pointer]);
+                printf("%d\n", vm_peek(vm));
                 break;
 
             case VM_OP_SCN:
@@ -165,7 +165,6 @@ void vm_run(struct vm* vm, const struct vm_instruction* program, const uint16_t 
                 {
                     vm->instruction_pointer = instruction.operand;
                 }
-
 
                 break;
 

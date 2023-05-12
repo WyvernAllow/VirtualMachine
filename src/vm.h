@@ -7,31 +7,20 @@
 
 enum vm_opcode
 {
-    // IO opcodes
-    
-    VM_OP_PRT,     // Prints the value at the top of the stack
-    VM_OP_SCN,     // Pushes user input taken from the console onto the stack.
-    
-    // Arithmetic opcodes
-
-    VM_OP_ADD,     // Adds the top two values on the stack and pushes the result onto the stack
-    VM_OP_SUB,     // Subtracts the top two values on the stack and pushes the result onto the stack
-    VM_OP_MUL,     // Multiplies the top two values on the stack and pushes the result onto the stack
-    VM_OP_DIV,     // Divides the top two values on the stack and pushes the result onto the stack
-
-    // Control flow opcodes
-
-    VM_OP_JMP,     // Jumps to the address specified.
-    VM_OP_JEQ,     // Jumps to the address specified if the top two values on the stack are equal
-    VM_OP_JNE,     // Jumps to the address specified if the top two values on the stack are not equal
-    VM_OP_JGT,     // Jumps to the address specified if the top value on the stack is greater than the second value on the stack
-    VM_OP_JLT,     // Jumps to the address specified if the top value on the stack is less than the second value on the stack
-    VM_OP_HLT,     // Halts the program
-
-    // Stack opcodes
-
-    VM_OP_PSH,     // Pushes the value specified onto the stack
-    VM_OP_POP,     // Pops the top value off the stack
+    VM_OP_PRT,
+    VM_OP_SCN,     
+    VM_OP_ADD,    
+    VM_OP_SUB,     
+    VM_OP_MUL,     
+    VM_OP_DIV,     
+    VM_OP_JMP,     
+    VM_OP_JEQ,     
+    VM_OP_JNE,     
+    VM_OP_JGT,     
+    VM_OP_JLT,    
+    VM_OP_HLT,         
+    VM_OP_PSH,     
+    VM_OP_POP,     
 };
 
 struct vm_instruction
@@ -50,6 +39,10 @@ struct vm
 
 struct vm* vm_create();
 void vm_destroy(struct vm* vm);
+
+void vm_push(struct vm* vm, const int32_t value);
+int32_t vm_pop(struct vm* vm);
+int32_t vm_peek(struct vm* vm);
 
 void vm_run(struct vm* vm, const struct vm_instruction* program, const uint16_t program_size);
 
