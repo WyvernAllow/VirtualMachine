@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.tcc": "c",
+        "memory": "c",
+        "memory_resource": "c",
+        "iosfwd": "c",
+        "new": "c",
+        "utility": "c"
+    }
+}
