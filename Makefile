@@ -13,7 +13,7 @@ SRCS = $(wildcard $(SRCDIR)/*.c)
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 # Define the output executable
-EXEC = program
+EXEC = vm
 
 # Define the build target
 $(EXEC): $(OBJS)
